@@ -5,7 +5,7 @@ services:
         build: ./docker/oracle
         shm_size: 4096M
         volumes:
-            - "./.docker-volumes/oracledb:/u01/app/oracle/oradata" # persistent oracle database data.
+            - "oracle_db:/u01/app/oracle/oradata"
             - "./docker/oracle/startup_scripts:/u01/app/oracle/scripts/startup"
         ports:
             - 1521:1521
@@ -13,3 +13,6 @@ services:
         environment:
             - ORACLE_ALLOW_REMOTE=true
             - ORACLE_PWD=PWD
+
+volumes: 
+    oracle_db:
